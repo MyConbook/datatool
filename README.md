@@ -21,7 +21,8 @@ The official MyConbook DataTool setup is as follows:
 * `_tool/` - This repository
 
 ### info.json structure
-```{
+```
+{
 	"versions": {
 		"android": 21 // Latest Android app version
 	},
@@ -29,7 +30,8 @@ The official MyConbook DataTool setup is as follows:
 		{"path": "condir", "name": "Convention Name", "details": "Secondary line"}
 		// Multiple cons are optional
 	]}
-}```
+}
+```
 
 If you want to use different directory names, change the options at the top of `mkdb.py`.
 
@@ -53,7 +55,8 @@ The data files are the following, required unless otherwise marked:
 * `buildingmaps.txt` - Building map list
 
 ### info.json structure
-```{
+```
+{
 	"Convention": "Convention Name",
 	"DayList": ["2014-07-03", "2014-07-04", "2014-07-05", "2014-07-06"], // Array of dates for the schedule
 	"CalendarURL": "", // URL for iCal file
@@ -63,7 +66,8 @@ The data files are the following, required unless otherwise marked:
 	"Timezone": "US/Pacific", // Timezone for convention, should be a Python timezone string
 	"HasGuide": 1, // Set to 1 if we have guide files configured, 0 if no guide or using a URL
 	"GuideURL": "" // Optional URL to open if no guide files configured
-}```
+}
+```
 
 
 Publishing a convention
@@ -78,6 +82,6 @@ Publishing a convention
 
 License
 -------
-MyConbook for Android is licensed under the Apache license. See README.txt.
+MyConbook for Android is licensed under the Apache license. See LICENSE.txt.
 
 Redistributions **may not** use the official MyConbook data source without permission.
