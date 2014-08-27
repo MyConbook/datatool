@@ -3,6 +3,7 @@ import urllib2
 import hashlib
 import string
 import re
+import datetime
 from database import Database, TableHandler
 
 class Schedule(TableHandler):
@@ -45,6 +46,9 @@ class Schedule(TableHandler):
 			category = component.decoded("categories", None)
 			loc = component.decoded("location", "(None)")
 			startdate = component["dtstart"].dt
+			if not isinstance(startdate, datetime.datetime):
+				# Item is all-day
+				continue
 			if not startdate.tzinfo:
 				startdate = real_tz.localize(startdate)
 			startdate = real_tz.normalize(startdate.astimezone(real_tz)).isoformat()
