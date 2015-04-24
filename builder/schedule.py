@@ -45,14 +45,19 @@ class Schedule(TableHandler):
 				desc = None
 			category = component.decoded("categories", None)
 			loc = component.decoded("location", "(None)")
-			startdate = component["dtstart"].dt
+			origstart = component["dtstart"].dt
+			startdate = origstart
 			if not isinstance(startdate, datetime.datetime):
 				# Item is all-day
 				continue
 			if not startdate.tzinfo:
 				startdate = real_tz.localize(startdate)
 			startdate = real_tz.normalize(startdate.astimezone(real_tz)).isoformat()
-			enddate = component["dtend"].dt
+			if not "dtend" in component:
+				# Item has start time but not end time
+				enddate = origstart
+			else:
+				enddate = component["dtend"].dt
 			if not enddate.tzinfo:
 				enddate = real_tz.localize(enddate)
 			enddate = real_tz.normalize(enddate.astimezone(real_tz)).isoformat()
