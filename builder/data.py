@@ -63,6 +63,7 @@ class Restaurants(Data):
 			dayOfCon = firstDate + datetime.timedelta(days=did)
 			did += 1
 			if (day == None): continue
+			if (day.find("Closed") > -1): continue
 			if (day.find("?") > -1): continue
 			if (day.find("Reservation") > -1): continue
 			for tp in day.split(";"):
@@ -72,8 +73,12 @@ class Restaurants(Data):
 					tpstr2 = tpstr + "11:59pm"
 				else:
 					tps = tp.split("-")
-					tpstr1 = tpstr + tps[0].strip() + "m"
-					tpstr2 = tpstr + tps[1].strip() + "m"
+					tpstr1 = tpstr + tps[0].replace(" ", "")
+					if not tpstr1.endswith("m"):
+						tpstr1 = tpstr1 + "m"
+					tpstr2 = tpstr + tps[1].replace(" ", "")
+					if not tpstr2.endswith("m"):
+						tpstr2 = tpstr2 + "m"
 				if (tpstr1.find(":") > 0): suse = self.datestr2
 				else: suse = self.datestr1
 				if (tpstr2.find(":") > 0): euse = self.datestr2

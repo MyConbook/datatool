@@ -2,7 +2,7 @@
 
 # mkdb.py
 # Consolidate convention data into a database
-# 2014 MyConbook
+# 2016 MyConbook
 
 import sys
 import builder
